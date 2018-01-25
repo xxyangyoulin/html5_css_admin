@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+body, h1, h2, ul, p, figure {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: outside none none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+div, li, a, header, img, span {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.hover-bg:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#main-page {
+    /*width: 100%;*/
+    height: 100%;
+    /*overflow: hidden;*/
+    position: relative;
+    background-color: #eeeeee;
+}
+
+.section {
+    margin-left: 240px;
+    height: 100%;
+}
+
+#header {
+    height: 55px;
+    background-color: white;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.24);
+    position: relative;
+    top: 0;
+}
+
+#header .user-info {
+    float: right;
+    cursor: pointer;
+    height: 55px;
+    display: block;
+    vertical-align: middle;
+    padding: 0 16px;
+}
+
+#header i {
+    line-height: 55px;
+    height: 55px;
+    padding: 0 16px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#header .user-info img {
+    width: 42px;
+    height: 42px;
+    padding: 2px;
+    margin-right: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    border: 1px solid #eeeeee;
+}
+
+#header .user-info span {
+    padding-top: 2px;
+    height: 55px;
+    line-height: 55px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#sidebar {
+    width: 240px;
+    height: 100%;
+    background-color: #2b353b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+}
+
+#sidebar .menu-item {
+    background-color: #2b353b;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: rgba(255, 2555, 255, 0.7);
+    position: relative;
+    cursor: pointer;
+}
+
+#sidebar .menu-head {
+    height: 55px;
+    line-height: 55px;
+    background-color: #111111;
+    color: #ffffff;
+    padding: 0 16px;
+    font-size: 20px;
+}
+
+#sidebar .open,
+#sidebar .menu-item:focus,
+#sidebar .menu-item:hover,
+#sidebar .sub-menu li :focus,
+#sidebar .sub-menu li :hover {
+    color: #ffffff;
+}
+
+#sidebar .menu-item .menu-icon {
+    padding-right: 16px;
+}
+
+#sidebar .menu-item .menu-title {
+    padding: 0 16px 0 0;
+}
+
+#sidebar .menu-item .menu-ind {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    font-size: 14px;
+    text-align: center;
+    -webkit-transition: all 0.15s ease-in;
+    -o-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
+}
+
+#sidebar .open .menu-ind {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.sub-menu {
+    padding: 0 0 0 42px;
+    display: none;
+    background-color: #3b4850;
+    font-size: 16px;
+}
+
+.sub-menu li {
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px rgba(255, 255, 255, 0.0) solid;
+}
+
+.sub-menu li:hover {
+    /*background-color: #475259;*/
+}
+
+.sub-menu li:last-child {
+    border-bottom: 0;
+}
+
+.sub-menu li a {
+    width: 100%;
+    display: block;
+    color: rgba(255, 2555, 255, 0.7);
+}
+
