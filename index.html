@@ -73,7 +73,7 @@
 
     <div class="section">
         <header id="header">
-            <i class="fa fa-bars hover-bg"></i>
+            <i id="menu-toggle" class="fa fa-bars hover-bg"></i>
             <div class="user-info hover-bg">
                 <img src="img/pic.jpg" alt="头像"/>
                 <span>张无忌</span>
@@ -84,6 +84,21 @@
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script>
+
+    function init_menu_toggle() {
+        $('#menu-toggle').click(function () {
+            var sidebar = $('#sidebar');
+            var section = $('.section');
+
+            if (sidebar.hasClass('is-open')) {
+                sidebar.hide().removeClass('is-open');
+                section.css('margin-left', '0');
+            }else{
+                sidebar.show().addClass('is-open');
+                section.css('margin-left',sidebar.css('width'));
+            }
+        });
+    }
 
     function init() {
         var sidebar = $('#sidebar');
@@ -99,6 +114,8 @@
         });
 
         sidebar.find('.open').next().show();
+
+        init_menu_toggle();
     }
 
     $(function () {
