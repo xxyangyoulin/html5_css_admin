@@ -6,13 +6,14 @@
           content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>admin</title>
 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
 <div id="main-page">
-    <div id="sidebar">
+    <div id="sidebar" class="sidebar-open">
         <ul>
             <li>
                 <div class="menu-item menu-head">
@@ -79,6 +80,83 @@
                 <span>张无忌</span>
             </div>
         </header>
+
+        <div class="page">
+            <table class="table table-hover"
+                   style="padding-bottom: 100px;">
+                <thead style="margin-top: 50px;background-color: white">
+                <tr>
+                    <th>排名</th>
+                    <th>断层</th>
+                    <th>所属河流</th>
+                    <th>检测单位</th>
+                    <th>被考核单位</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr class="active">
+                    <td>.active</td>
+                    <td>表示当前活动的信息</td>
+                </tr>
+                <tr class="success">
+                    <td>.success</td>
+                    <td>表示成功或者正确的行为</td>
+                </tr>
+
+                <tr class="warning">
+                    <td>.warning</td>
+                    <td>表示警告，需要特别注意</td>
+                </tr>
+                <tr class="danger">
+                    <td>.danger</td>
+                    <td>表示危险或者可能是错误的行为</td>
+                </tr>
+                <tr class="active">
+                    <td>.active</td>
+                    <td>表示当前活动的信息</td>
+                </tr>
+                <tr class="success">
+                    <td>.success</td>
+                    <td>表示成功或者正确的行为</td>
+                </tr>
+                <tr class="info">
+                    <td>.info</td>
+                    <td>表示中立的信息或行为</td>
+                </tr>
+                <tr class="warning">
+                    <td>.warning</td>
+                    <td>表示警告，需要特别注意</td>
+                </tr>
+                <tr class="danger">
+                    <td>.danger</td>
+                    <td>表示危险或者可能是错误的行为</td>
+                </tr>
+                <tr class="active">
+                    <td>.active</td>
+                    <td>表示当前活动的信息</td>
+                </tr>
+                <tr class="success">
+                    <td>.success</td>
+                    <td>表示成功或者正确的行为</td>
+                </tr>
+                <tr class="info">
+                    <td>.info</td>
+                    <td>表示中立的信息或行为</td>
+                </tr>
+                <tr class="warning">
+                    <td>.warning</td>
+                    <td>表示警告，需要特别注意</td>
+                </tr>
+                <tr class="danger">
+                    <td>.danger</td>
+                    <td>表示危险或者可能是错误的行为</td>
+
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -90,12 +168,12 @@
             var sidebar = $('#sidebar');
             var section = $('.section');
 
-            if (sidebar.hasClass('is-open')) {
-                sidebar.hide().removeClass('is-open');
+            if (sidebar.hasClass('sidebar-open')) {
+                sidebar.hide().removeClass('sidebar-open');
                 section.css('margin-left', '0');
-            }else{
-                sidebar.show().addClass('is-open');
-                section.css('margin-left',sidebar.css('width'));
+            } else {
+                sidebar.show().addClass('sidebar-open');
+                section.css('margin-left', sidebar.css('width'));
             }
         });
     }
