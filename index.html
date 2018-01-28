@@ -82,103 +82,55 @@
         </header>
 
         <div class="page">
-            <table class="table table-hover"
-                   style="padding-bottom: 100px;">
-                <thead style="margin-top: 50px;background-color: white">
-                <tr>
-                    <th>排名</th>
-                    <th>断层</th>
-                    <th>所属河流</th>
-                    <th>检测单位</th>
-                    <th>被考核单位</th>
-                    <th>备注</th>
-                </tr>
-                </thead>
 
-                <tbody>
-                <tr class="active">
-                    <td>.active</td>
-                    <td>表示当前活动的信息</td>
-                </tr>
-                <tr class="success">
-                    <td>.success</td>
-                    <td>表示成功或者正确的行为</td>
-                </tr>
-
-                <tr class="warning">
-                    <td>.warning</td>
-                    <td>表示警告，需要特别注意</td>
-                </tr>
-                <tr class="danger">
-                    <td>.danger</td>
-                    <td>表示危险或者可能是错误的行为</td>
-                </tr>
-                <tr class="active">
-                    <td>.active</td>
-                    <td>表示当前活动的信息</td>
-                </tr>
-                <tr class="success">
-                    <td>.success</td>
-                    <td>表示成功或者正确的行为</td>
-                </tr>
-                <tr class="info">
-                    <td>.info</td>
-                    <td>表示中立的信息或行为</td>
-                </tr>
-                <tr class="warning">
-                    <td>.warning</td>
-                    <td>表示警告，需要特别注意</td>
-                </tr>
-                <tr class="danger">
-                    <td>.danger</td>
-                    <td>表示危险或者可能是错误的行为</td>
-                </tr>
-                <tr class="active">
-                    <td>.active</td>
-                    <td>表示当前活动的信息</td>
-                </tr>
-                <tr class="success">
-                    <td>.success</td>
-                    <td>表示成功或者正确的行为</td>
-                </tr>
-                <tr class="info">
-                    <td>.info</td>
-                    <td>表示中立的信息或行为</td>
-                </tr>
-                <tr class="warning">
-                    <td>.warning</td>
-                    <td>表示警告，需要特别注意</td>
-                </tr>
-                <tr class="danger">
-                    <td>.danger</td>
-                    <td>表示危险或者可能是错误的行为</td>
-
-
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
 
 <script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery.hashchange.js"></script>
 <script>
+
+
+    function hide_sidebar() {
+        var sidebar = $('#sidebar');
+        if (sidebar.hasClass('sidebar-open')) {
+            sidebar.removeClass('sidebar-open');
+            sidebar.stop().animate({left: '-220px'});
+            $('.section').stop().animate({marginLeft: "0"});
+            $('#header').stop().animate({marginLeft: "0"});
+            return true;
+        }
+        return false;
+    }
+
+    function show_sidebar() {
+        var sidebar = $('#sidebar');
+        if (!sidebar.hasClass('sidebar-open')) {
+            sidebar.addClass('sidebar-open');
+            sidebar.animate({left: '0px'});
+            $('.section').stop().animate({marginLeft: sidebar.width()});
+            $('#header').stop().animate({marginLeft: sidebar.width()});
+            return true;
+        }
+        return false;
+    }
+
+    var is_user_close;
 
     function init_menu_toggle() {
         $('#menu-toggle').click(function () {
-            var sidebar = $('#sidebar');
-            var section = $('.section');
-
-            if (sidebar.hasClass('sidebar-open')) {
-                sidebar.hide().removeClass('sidebar-open');
-                section.css('margin-left', '0');
+            if ($('#sidebar').hasClass('sidebar-open')) {
+                hide_sidebar();
+                is_user_close = true;
             } else {
-                sidebar.show().addClass('sidebar-open');
-                section.css('margin-left', sidebar.css('width'));
+                show_sidebar();
+                is_user_close = false;
             }
         });
     }
 
-    function init() {
+    function initSidebar() {
         var sidebar = $('#sidebar');
         var menu_item = sidebar.find('.menu-item');
 
@@ -196,9 +148,53 @@
         init_menu_toggle();
     }
 
-    $(function () {
-        init();
+    $(window).resize(function () {
+        if (is_user_close) {
+            return;
+        }
+
+        var w = $(document).outerWidth();
+        if (w < 992) {
+            hide_sidebar();
+        } else {
+            show_sidebar();
+        }
     });
+
+    $(function () {
+        initSidebar();
+    });
+
+    $(function () {
+        // Bind the event.
+        $(window).hashchange(function () {
+            console.log('hashchange');
+            console.log("hash" + location.hash);
+
+            if (!location.hash || location.hash == "") {
+                initMainPage();
+                return;
+            }
+
+            //use jquery ajax err, so..
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    $(".page").html(xhr.responseText);
+                }
+            };
+            var action = location.hash.replace('#', "");
+            console.log(action);
+            xhr.open("get", action);
+            xhr.send();
+        });
+
+        $(window).trigger("hashchange");
+    });
+
+    function initMainPage() {
+        window.location = "index.html#table.html";
+    }
 </script>
 </body>
 </html>

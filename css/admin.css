@@ -20,6 +20,7 @@ div, li, a, header, img, span {
 
 html, body {
     height: 100%;
+    min-width: 320px;
 }
 
 .hover-bg:hover {
@@ -27,6 +28,7 @@ html, body {
 }
 
 #main-page {
+    min-width: 320px;
     /*width: 100%;*/
     height: 100%;
     /*overflow: hidden;*/
@@ -35,16 +37,21 @@ html, body {
 }
 
 .section {
-    margin-left: 240px;
+    margin-left: 220px;
     height: 100%;
+    position: relative;
 }
 
 #header {
     height: 55px;
     background-color: white;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.24);
-    position: relative;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    margin-left: 220px;
+    z-index: 999;
 }
 
 #header .user-info {
@@ -83,23 +90,21 @@ html, body {
     vertical-align: middle;
 }
 
-.section .page{
+.section .page {
+    margin-top: 55px;
     width: 100%;
-    padding: 1%;
+    padding: 10px;
 }
 
 #sidebar {
-    width: 240px;
+    width: 220px;
     height: 100%;
     background-color: #2b353b;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
-
 }
-
-
 
 #sidebar .menu-item {
     background-color: #2b353b;
@@ -179,5 +184,22 @@ html, body {
     display: block;
     color: rgba(255, 2555, 255, 0.7);
     text-decoration: none;
+}
+
+/*main page*/
+.breadcrumbs{
+}
+.breadcrumbs,.breadcrumb{
+    font-size: 16px;
+    background-color: white;
+    margin-bottom: 12px;
+}
+
+.breadcrumb>li{
+    color: #3f3f3f;
+}
+
+.button-group {
+    margin-bottom: 10px;
 }
 
