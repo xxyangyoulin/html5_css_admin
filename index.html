@@ -75,10 +75,17 @@
     <div class="section">
         <header id="header">
             <i id="menu-toggle" class="fa fa-bars hover-bg"></i>
-            <div class="user-info hover-bg">
-                <img src="img/pic.jpg" alt="头像"/>
-                <span>张无忌</span>
-            </div>
+
+            <li class="dropdown user-info hover-bg">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span>张无忌</span>
+                    <img src="img/pic.jpg" alt="头像"/>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">修改密码</a></li>
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </li>
         </header>
 
         <div class="page">
@@ -89,16 +96,16 @@
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/jquery.hashchange.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script>
-
 
     function hide_sidebar() {
         var sidebar = $('#sidebar');
         if (sidebar.hasClass('sidebar-open')) {
             sidebar.removeClass('sidebar-open');
-            sidebar.stop().animate({left: '-220px'});
-            $('.section').stop().animate({marginLeft: "0"});
-            $('#header').stop().animate({marginLeft: "0"});
+            sidebar.stop().animate({left: '-220px'}, 200);
+            $('.section').stop().animate({marginLeft: "0"},200);
+            $('#header').stop().animate({marginLeft: "0"},200);
             return true;
         }
         return false;
@@ -108,9 +115,9 @@
         var sidebar = $('#sidebar');
         if (!sidebar.hasClass('sidebar-open')) {
             sidebar.addClass('sidebar-open');
-            sidebar.animate({left: '0px'});
-            $('.section').stop().animate({marginLeft: sidebar.width()});
-            $('#header').stop().animate({marginLeft: sidebar.width()});
+            sidebar.animate({left: '0px'},200);
+            $('.section').stop().animate({marginLeft: sidebar.width()},200);
+            $('#header').stop().animate({marginLeft: sidebar.width()},200);
             return true;
         }
         return false;

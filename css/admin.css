@@ -63,6 +63,12 @@ html, body {
     padding: 0 16px;
 }
 
+#header .user-info>a{
+    color: #444444;
+    font-size:15px;
+    text-decoration: none;
+}
+
 #header i {
     line-height: 55px;
     height: 55px;
