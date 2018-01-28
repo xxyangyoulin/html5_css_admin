@@ -28,9 +28,9 @@
                     <span class="menu-ind fa fa-chevron-right"></span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#">子菜单一</a></li>
-                    <li><a href="#">子菜单二</a></li>
-                    <li><a href="#">子菜单三</a></li>
+                    <li><a class="spec-menu-item" href="index.html#page1.html">子菜单一</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单二</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单三</a></li>
                 </ul>
             </li>
             <li>
@@ -40,9 +40,9 @@
                     <span class="menu-ind fa fa-chevron-right"></span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#">子菜单一</a></li>
-                    <li><a href="#">子菜单二</a></li>
-                    <li><a href="#">子菜单三</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单一</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单二</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单三</a></li>
                 </ul>
             </li>
             <li>
@@ -52,9 +52,9 @@
                     <span class="menu-ind fa fa-chevron-right"></span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#">子菜单一</a></li>
-                    <li><a href="#">子菜单二</a></li>
-                    <li><a href="#">子菜单三</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单一</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单二</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单三</a></li>
                 </ul>
             </li>
             <li>
@@ -64,9 +64,9 @@
                     <span class="menu-ind fa fa-chevron-right"></span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="#">子菜单一</a></li>
-                    <li><a href="#">子菜单二</a></li>
-                    <li><a href="#">子菜单三</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单一</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单二</a></li>
+                    <li><a class="spec-menu-item" href="#">子菜单三</a></li>
                 </ul>
             </li>
         </ul>
@@ -130,6 +130,15 @@
         });
     }
 
+    function init_mini_page() {
+        $(".spec-menu-item").click(function () {
+            var w = $(document).outerWidth();
+            if (w < 992) {
+                hide_sidebar();
+            }
+        });
+    }
+
     function initSidebar() {
         var sidebar = $('#sidebar');
         var menu_item = sidebar.find('.menu-item');
@@ -146,6 +155,8 @@
         sidebar.find('.open').next().show();
 
         init_menu_toggle();
+
+        init_mini_page();
     }
 
     $(window).resize(function () {
@@ -168,9 +179,6 @@
     $(function () {
         // Bind the event.
         $(window).hashchange(function () {
-            console.log('hashchange');
-            console.log("hash" + location.hash);
-
             if (!location.hash || location.hash == "") {
                 initMainPage();
                 return;
